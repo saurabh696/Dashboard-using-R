@@ -92,6 +92,6 @@ ggplot(data = data) +
   geom_bar() +
   theme_minimal()
 
-```
+```-
 
 
