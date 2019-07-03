@@ -1,0 +1,97 @@
+---
+title: "Vagabond Brains"
+output: 
+  flexdashboard::flex_dashboard:
+    theme: cerulean
+    orientation: rows
+    vertical_layout: fill
+    social: ["menu"]
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(readxl)
+library(knitr)
+library(DT)
+library(rpivotTable)
+library(ggplot2)
+library(plotly)
+library(dplyr)
+library(openintro)
+library(highcharter)
+library(psych)
+```
+```{r}
+data = read_excel("C:/Users/user/Desktop/New folder (2)/dashboard.xlsx")
+````
+```{r}
+mycolors = c("blue" , "#ffc125", "green" , "orange")
+```
+
+
+
+Interactive Data Visualization
+===================================================
+
+Row
+---------------------------------------------------
+
+### Website Audit Analysis
+```{r}
+valueBox(paste("Manav Rachna Site Audit"), color = "warning")
+```
+
+
+
+
+
+
+
+
+###Total Analysis
+```{r}
+valueBox(length(data$Total.checks),
+         icon = "Total Analysis")
+```
+
+
+
+
+
+
+Row
+-----------------------------------------------------------------------
+
+### Total checks
+
+```{r}
+ggplot(data = data) +
+  aes(x = Total.checks) +
+  geom_bar(fill = "#0c4c8a") +
+  theme_minimal()
+```
+
+
+### Failed checks
+
+```{r}
+
+ggplot(data = data) +
+  aes(x = Failed.checks) +
+  geom_bar(fill = "#0c4c8a") +
+  theme_minimal()
+
+
+```
+
+### Issue Type
+
+```{r}
+ggplot(data = data) +
+  aes(x = Issue.Type, fill = Total.checks) +
+  geom_bar() +
+  theme_minimal()
+
+```
+
+
